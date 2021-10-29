@@ -1,0 +1,21 @@
+<br><br><br><br><br><br><br><br>
+<div class="container col-sm-3 border"><br>
+
+    <div class="container">
+        <form [formGroup]="emailForm">
+            <div class="form-group">
+                <label for="email" class="form-label">Adresse Email</label>
+                <input type="email" class="form-control" formControlName="email" name="email"
+                    placeholder="Entrer votre adresse email">
+            </div><br>
+    
+                <button type="submit" class="btn btn-primary" style="font-size: 22px; text-align: center;"
+                    (click)="postEmailRecuperation(emailForm)"> envoyer</button>
+            <br><br>
+            <a routerLink="/login" id="cancel_reset"><i class="fa fa-angle-left" style='font-size:17px'>retour</i> </a>
+
+
+        </form>
+    </div>
+
+</div>

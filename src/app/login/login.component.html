@@ -1,0 +1,23 @@
+<div class="container col-sm-6"><br><br><br><br>
+    <h3 style="color: rgb(0, 57, 245);text-align: center;font-size: 40px; font-weight: bold;">CONNECTEZ-VOUS</h3>
+    <br><br>
+    <div class="container border"><br>
+        <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="form-label">Adrresse Email</label>
+                <input type="email" formControlName="email" class="form-control" name="email"
+                    placeholder="Enter votre adresse email" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                <input type="password" formControlName="password" name="password" class="form-control"
+                    placeholder="Enter votre mot de passe" minlength="8" required>
+                <span></span>
+            </div><br>
+
+            <button type="submit" class="btn btn-primary col-sm-12" style="font-size: 25px;">
+                Connexion</button><br><br>
+            <p style="text-align: center;"><i class="fa fa-lock"><a href="" routerLink='/recup-email'>Mot de passe oublié?</a></i></p>
+        </form>
+    </div>
+</div>

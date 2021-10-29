@@ -1,0 +1,64 @@
+<nav class="navbar navbar-light bg-success">
+    <div class="container-fluid"></div>
+</nav><br>
+
+<div>
+    <p style="text-align: center; font-size: 40px; font-weight: bold; color: rgb(0, 41, 226);">LA LISTE DES COMMANDES
+    </p>
+</div><br>
+
+<div class="container-fluid">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ADRESSES EMAIL</th>
+                <th scope="col">ARTICLES</th>
+                <th scope="col">ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <tr *ngFor="let row of CommandeData">
+                <td> {{row.email}} </td>
+                <td> {{row.article}} </td>
+                <td>
+                    <button (click)="onEdit(row)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        class="btn btn-success">Voir</button>
+                    <!-- <button (click)="annulerCommandes(row)" class="btn btn-danger mx-3">Annuler</button> -->
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form [formGroup]="angFormCommande">
+                    <fieldset disabled>
+                        <div class="mb-3">
+                            <label for="exampleInputDesignation" class="form-label">ADRESSE EMAIL</label>
+                            <input formControlName="email" class="form-control" [disabled]="false">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputCategories" class="form-label">ARTILCES</label>
+                            <input formControlName="article" class="form-control" [disabled]="false" />
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Fermer </button>
+                <button type="button" class="btn btn-success" (click)="valider(angFormCommande)">Valider
+                    Commande</button>
+            </div>
+        </div>
+    </div>
+</div>

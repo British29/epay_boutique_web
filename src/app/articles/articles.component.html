@@ -1,0 +1,102 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="flex">
+            <button (click)="clickAjoutArticles()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                class="btn btn-primary">Ajouter
+                un article </button>
+
+        </div>
+        <button (click)="deConnecter()" class="btn btn-danger">Deconnexion</button>
+    </div>
+</nav><br>
+<div>
+    <p style="text-align: center; font-size: 40px; font-weight: bold; color: black;">LA LISTE
+        DES ARTICLES</p>
+</div><br>
+
+<!-- <p>Firstname: {{ Users.name}}</p> -->
+
+<div class="container-fluid">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <!-- <th scope="col">IDENTIFIANT</th> -->
+                <th scope="col" style="text-align: center;">DESIGNATION</th>
+                <th scope="col" style="text-align: center;">CATEGORIE</th>
+                <th scope="col" style="text-align: center;">QUANTITE</th>
+                <th scope="col" style="text-align: center;">MONTANT</th>
+                <th scope="col" style="text-align: center;">PHOTO</th>
+                <th scope="col" style="text-align: center;">ACTION </th>
+                <th scope="col" style="text-align: center;">DATE D'ENREGISTREMENT </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <!-- 
+            <ng-container *ngIf="!ArticlesData"> -->
+            <tr *ngFor="let row of ArticlesData">
+                <td style="text-align: center;"> {{row.designation}} </td>
+                <td style="text-align: center;"> {{row.categories}} </td>
+                <td style="text-align: center;"> {{row.quantite}} </td>
+                <td style="text-align: center;"> {{row.prix}} CFA</td>
+                <td width="20%" style="text-align: center;"> <img
+                        src="http://localhost/phpboutique/uploads/{{row.photo}}" width="30%"> </td>
+                <td style="text-align: center;">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info"
+                        (click)="onEdit(row)">Editer</button>
+                    <button (click)="supprimerArticles(row)" class="btn btn-danger mx-3">Supprimer</button>
+                </td>
+                <td style="text-align: center;"> {{row.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter un article</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="angForm">
+                    <div class="mb-3">
+                        <label for="exampleInputDesignation" class="form-label">DESIGNATION</label>
+                        <input type="text" formControlName="designation" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputCategories" class="form-label">CATEGORIE</label>
+                        <input type="text" formControlName="categories" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputQuantite" class="form-label">QUANTITE</label>
+                        <input type="text" formControlName="quantite" class="form-control">
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="exampleInputPrix" class="form-label">LE MONTANT</label>
+                        <input type="text" formControlName="prix" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"> CHOISIR UNE IMAGE </label>
+                        <input type="file" formControlName="file" id="file" (change)="onFileChange($event)"
+                            class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Fermer </button>
+                <button type="button" class="btn btn-success" (click)="postarticledata(angForm)"
+                    *ngIf="showAdd">Enregister</button>
+
+                <button type="button" class="btn btn-primary" *ngIf="showUpdate"
+                    (click)="updateArticle()">Modifier</button>
+            </div>
+        </div>
+    </div>
+</div>

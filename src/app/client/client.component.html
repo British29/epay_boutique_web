@@ -1,0 +1,26 @@
+<br>
+<div>
+    <p style="text-align: center; font-size: 40px; font-weight: bold; color: rgb(255, 40, 40);">LA LISTE DES CLIENTS
+    </p>
+</div><br>
+
+<div class="container-fluid">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">NOM & PRENOMS</th>
+                <th scope="col">ADRESSE</th>
+                <th scope="col">NUMERO</th>
+                <th scope="col">ADRESSE EMAIL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of ClientData">
+                <td> {{row.nom}} </td>
+                <td> {{row.adresse}} </td>
+                <td> {{row.numero}} </td>
+                <td> {{row.email}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
